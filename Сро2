@@ -1,0 +1,42 @@
+from collections import deque
+
+class BankQueue:
+    def __init__(self):
+        self.queue = deque()
+
+    def add_client(self, name):
+        """Добавление клиента в очередь"""
+        self.queue.append(name)
+        print(f"Клиент {name} добавлен в очередь")
+
+    def serve_client(self):
+        """Обслуживание клиента"""
+        if self.queue:
+            client = self.queue.popleft()
+            print(f"Обслужен клиент: {client}")
+        else:
+            print("Очередь пуста")
+
+    def show_queue(self):
+        """Показ текущей очереди"""
+        if self.queue:
+            print("Текущая очередь:", list(self.queue))
+        else:
+            print("Очередь пуста")
+
+
+# Пример работы
+bank = BankQueue()
+
+bank.add_client("Alice")
+bank.add_client("Bob")
+bank.add_client("Charlie")
+
+bank.show_queue()
+
+bank.serve_client()
+bank.show_queue()
+
+bank.serve_client()
+bank.serve_client()
+bank.serve_client()
